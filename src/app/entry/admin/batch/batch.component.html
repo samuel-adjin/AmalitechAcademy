@@ -1,0 +1,120 @@
+<div class="container">
+ <div class="place"> 
+  <header>
+    <div>
+      <h2 class="dashhead">TRAINEES</h2>
+    </div>
+    <div class="add">
+      <div>
+        <i class="fas fa-plus-circle posIcon" (click) = "add(1)"></i>
+      </div>
+      <h4 class="pos">Add new Trainee</h4>
+    </div>
+    <div class="del">
+      <div>
+        <i class="fas fa-sync-alt posIcon" (click) ="refresh()"></i>
+      </div>
+      <h4 class="pos">Refresh list</h4>
+    </div>
+  </header>
+  <header class="entry">
+    <div class="entryHead">
+      <div class="entries">
+        <p>Show</p>
+        <select name="" id="">
+          <option value="">2</option>
+          <option value="">5</option>
+          <option value="">8</option>
+          <option value="">10</option>
+          <option value="">12</option>
+        </select>
+        <p>entries</p>
+      </div>
+      <div class="status">
+        <i class="fas fa-filter stat"></i>
+        <p>Status</p>
+        <select name="" class="wselect">
+          <option value="">Any</option>
+          <option value="">Created</option>
+          <option value="">Activated</option>
+          <option value="">Completed</option>
+          <option value="">Suspended</option>
+        </select>
+      </div>
+      <div class="sname">
+        <p>Name</p>
+        <input type="text">
+        <div class="search">
+          <i class="fas fa-search icon"></i>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <table class="table">
+
+    <thead>
+      <th>Batch Name</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of batch">
+        <td data-label="Firstname">{{b.batchName}}</td>
+        <td data-label="LastName">{{b.beginDate}}</td>
+        <td data-label="dob">{{b.endDate}}</td>
+        <td data-label="Status">{{b.batchStatus}}</td> 
+        <td data-label="Actions" class="actions">
+        <td class="edit">
+          <div class="edt">
+            <i class="far fa-edit pen"></i>
+          </div>
+          <div>
+            <i class="fas fa-trash-alt trash" (click) = "add2(b.batchId,2)"></i>
+          </div>
+        </td>
+         <!-- deleteModal -->
+  <div class="deleteModal"  *ngIf ="showAdd == 2">
+    <p>Are you sure you want to delete batch</p>
+    <div class="butn" >
+      <button (click) ="deleteBatch(batch.batchId)">Yes</button>
+      <button (click) ="close()">No</button>
+
+    </div>
+</div>
+      </tr>
+    </tbody>
+  </table>
+ </div>
+    <!-- modalContainer -->
+  <div class="modalContainer" *ngIf ="showAdd == 1">
+    <header class="modalHeader">
+      <p>Add New Batch</p>
+    </header>
+    <form action="" class="formModal" #traineeRecords = "ngForm" (ngSubmit) ="createNewBatch(traineeRecords.value)">
+        <label for="">Batch Name</label>
+        <input type="text" name="batchName" ngModel>
+        <label for="">Start Date</label>
+        <input type="text" name="startDate" ngModel>
+        <label for="">End Date</label>
+        <input type="text" name="finishDate" ngModel>
+        <select name="batchStatus" id="" ngModel>
+          <option value="" >Choose Trainee Status</option>
+          <option value="COMPLETED">Completed</option>
+          <option value="SUSPENDED">Suspended</option>
+          <option value="ACTIVATED">Activated</option>
+          <option value="CREATED">Created</option>
+        </select>
+        
+       <div class="btn">
+          <button>Create</button>
+          <button (click) = "close()">Cancel</button>
+       </div>
+    </form>
+  </div>
+  
+ 
+</div>

@@ -1,0 +1,126 @@
+<div class="container">
+ <div class="place"> 
+  <header>
+    <div>
+      <h2 class="dashhead">TRAINEES</h2>
+    </div>
+    <div class="add">
+      <div>
+        <i class="fas fa-plus-circle posIcon" (click) = "add(1)"></i>
+      </div>
+      <h4 class="pos">Add new Trainee</h4>
+    </div>
+    <div class="del">
+      <div>
+        <i class="fas fa-sync-alt posIcon" (click) ="refresh()"></i>
+      </div>
+      <h4 class="pos">Refresh list</h4>
+    </div>
+  </header>
+  <header class="entry">
+    <div class="entryHead">
+      <div class="entries">
+        <p>Show</p>
+        <select name="" id="">
+          <option value="2">2</option>
+          <option value="4">4</option>
+          <option value="6">6</option>
+          <option value="8">8</option>
+          <option value="10">10</option>
+        </select>
+        <p>entries</p>
+      </div>
+      <div class="status" (change)="getAllTraineesByStatus($event)" >
+        <i class="fas fa-filter stat"></i>
+        <p>Status</p>
+        <select name="" class="wselect"  >
+          <option value="default" selected="selected">Any</option>
+          <option value="CREATED">Created</option>
+          <option value="ACTIVATED">Activated</option>
+          <option value="COMPLETED">Completed</option>
+          <option value="SUSPENDED">Suspended</option>
+        </select>
+      </div>
+      <div class="sname">
+        <p>Batch_Id</p>
+        <input type="text" ngModel name="traineeId" #traineeId (change)="getAllTraineeByBatch(traineeId.value)">
+        <div class="search" >
+          <i class="fas fa-search icon" (click)="getAllTraineeByBatch(traineeId.value)"></i>
+        </div>
+
+      </div>
+    </div>
+  </header>
+  <table class="table">
+
+    <thead>
+      <th>FirstName</th>
+      <th>Lastname</th>
+      <th>dob</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let train of trainee">
+        <td data-label="Firstname">{{train.name}}</td>
+        <td data-label="LastName">{{train.surname}}</td>
+        <td data-label="dob">{{train.dob}}</td>
+        <td data-label="Status">{{train.trainee_status}}</td>
+        <td data-label="Actions" class="actions">
+        <td class="edit">
+          <div class="edt">
+            <i class="far fa-edit pen"></i>
+          </div>
+          <div>
+            <i class="fas fa-trash-alt trash" (click) = "add2(train.traineeId,2)"></i>
+          </div>
+        </td>
+         <!-- deleteModal -->
+  <div class="deleteModal"  *ngIf ="showAdd == 2">
+    <p>Are you sure you want to delete trainee</p>
+    <div class="butn" >
+      <button (click) ="deleteTrainee(trainee.traineeId)">Yes</button>
+      <button (click) ="close()">No</button>
+
+    </div>
+</div>
+      </tr>
+    </tbody>
+  </table>
+ </div>
+    <!-- modalContainer -->
+  <div class="modalContainer" *ngIf ="showAdd == 1">
+    <header class="modalHeader">
+      <p>Add New Trainee</p>
+    </header>
+    <form action="" class="formModal" #traineeRecords = "ngForm" (ngSubmit) ="createNewTrainee(traineeRecords.value)">
+        <label for="">FirstName</label>
+        <input type="text" name="firstName" ngModel>
+        <label for="">LastName</label>
+        <input type="text" name="lastName" ngModel>
+        <select name="traineeBatchId" id="" ngModel>
+          <option value="" >Choose Trainee's Batch</option>
+          <option value="1">Batch 1</option>
+          <option value="2">Batch 2</option>
+          <option value="3">Batch 3</option>
+          <option value="4">Batch 4</option>
+        </select>
+        <label for="">Date Of Birth</label>
+        <input type="date" name="dateOfBirth" ngModel>
+        <select name="traineeStatus" id="" ngModel>
+          <option value="" >Choose Trainee Status</option>
+          <option value="COMPLETED">Completed</option>
+          <option value="SUSPENDED">Suspended</option>
+          <option value="ACTIVATED">Activated</option>
+          <option value="CREATED">Created</option>
+        </select>
+        
+       <div class="btn">
+          <button>Create</button>
+          <button (click) = "close()">Cancel</button>
+       </div>
+    </form>
+  </div>
+  
+ 
+</div>
