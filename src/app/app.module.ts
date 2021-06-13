@@ -13,7 +13,6 @@ import { TrackComponent } from './entry/admin/track/track.component';
 import { TraineeTabComponent } from './entry/admin/trainee-tab/trainee-tab.component';
 import { UsersComponent } from './entry/admin/users/users.component';
 import { UsergroupComponent } from './entry/usergroup/usergroup.component';
-import { DepartComponent } from './entry/depart/depart.component';
 
 
 @NgModule({
@@ -27,7 +26,6 @@ import { DepartComponent } from './entry/depart/depart.component';
     TraineeTabComponent,
     UsersComponent,
     UsergroupComponent,
-    DepartComponent,
     
   ],
   imports: [

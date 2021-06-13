@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './entry/admin/admin.component';
 import { BatchComponent } from './entry/admin/batch/batch.component';
 import { DashboardComponent } from './entry/admin/dashboard/dashboard.component';
+import { DepartComponent } from './entry/admin/depart/depart.component';
 import { TrackComponent } from './entry/admin/track/track.component';
 import { TraineeTabComponent } from './entry/admin/trainee-tab/trainee-tab.component';
 import { TraineeComponent } from './entry/admin/trainee/trainee.component';
 import { UsersComponent } from './entry/admin/users/users.component';
-import { DepartComponent } from './entry/depart/depart.component';
 
 
 
