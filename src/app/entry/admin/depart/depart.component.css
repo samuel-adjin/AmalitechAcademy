@@ -1,6 +1,6 @@
 .my-custom-scrollbar {
 	position: relative;
-	height: 300px;
+	height: 200px;
 	overflow: auto;
 	}
 	.table-wrapper-scroll-y {
@@ -115,7 +115,7 @@
 
 	.m{
 		width:40%;
-		height: 90vh;
+		height: 40vh;
 		position: absolute;
 		background-color: rgb(255, 255, 255);
 		margin-left: 37%;
@@ -159,9 +159,9 @@
 	.addbtn{
 		display: flex;
 		column-gap: 30px;
-		width: 95%;
+		width: 100%;
 		margin-top: 20px;
-		padding-left: 200px;
+		padding-left: 150px;
 	}
 
 	.size{
@@ -191,4 +191,14 @@
 		column-gap: 40px;
 		margin-left: 50px;
 		margin-top: 50px;
+	}
+
+
+	.form-control.ng-touched.ng-invalid{
+		border:2px solid red;
+	}
+
+	.error{
+		margin-left: 20px;
+		color: red;
 	}

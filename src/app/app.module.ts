@@ -9,6 +9,11 @@ import {FormsModule} from '@angular/forms';
 import { BatchComponent } from './entry/admin/batch/batch.component';
 import { TraineeComponent } from './entry/admin/trainee/trainee.component';
 import { DashboardComponent } from './entry/admin/dashboard/dashboard.component';
+import { TrackComponent } from './entry/admin/track/track.component';
+import { TraineeTabComponent } from './entry/admin/trainee-tab/trainee-tab.component';
+import { UsersComponent } from './entry/admin/users/users.component';
+import { UsergroupComponent } from './entry/usergroup/usergroup.component';
+import { DepartComponent } from './entry/depart/depart.component';
 
 
 @NgModule({
@@ -18,6 +23,12 @@ import { DashboardComponent } from './entry/admin/dashboard/dashboard.component'
     BatchComponent,
     TraineeComponent,
     DashboardComponent,
+    TrackComponent,
+    TraineeTabComponent,
+    UsersComponent,
+    UsergroupComponent,
+    DepartComponent,
+    
   ],
   imports: [
     BrowserModule,

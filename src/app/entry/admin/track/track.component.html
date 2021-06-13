@@ -23,15 +23,15 @@
       </div> -->
 
       <div class="input-group rounded">
-        <input type="search" class="form-control rounded" placeholder="Batch Id" aria-label="Search"
-          aria-describedby="search-addon" ngModel name="traineeId" #traineeId  />
+        <input type="search" class="form-control rounded" placeholder="track Id" aria-label="Search"
+          aria-describedby="search-addon" ngModel name="trackId" #trackId  />
         <span class="input-group-text border-0" id="search-addon" >
           <i class="fas fa-search"  ></i>
         </span>
       </div>
 </div>
 <div class="btnCon" >
-  <button type="button" class="btn btn-primary btn-sm" (click) =add(1) >Add New Trainee</button>
+  <button type="button" class="btn btn-primary btn-sm" (click) =add(1) >Add New Track</button>
 </div>
 
 <div class="table-wrapper-scroll-y my-custom-scrollbar pos">
@@ -39,26 +39,24 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">BatchName</th>
-        <th scope="col">Begin Date</th>
-        <th scope="col">End Date</th>
-        <th scope="col">Status</th>
+        <th scope="col">Track Name</th>
+        <th scope="col">Track Code</th>
+        <th scope="col">Track Status</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let b of batch">
-        <th scope="row">{{b.batchId}}</th>
-        <td>{{b.batchName}}</td>
-        <td>{{b.beginDate}}</td>
-        <td>{{b.endDate}}</td>
-        <td>{{b.batchStatus}}</td>
+      <tr *ngFor="let tr of track">
+        <th scope="row">{{tr.trackId}}</th>
+        <td>{{tr.trackName}}</td>
+        <td>{{tr.code}}</td>
+        <td>{{tr.trackStatus}}</td>
         <td class="edit">
           <div class="edt">
             <i class="far fa-edit pen"></i>
           </div>
           <div>
-            <i class="fas fa-trash-alt trash" (click) = "add2(b.batchId,2)"></i>
+            <i class="fas fa-trash-alt trash" (click) = "add2(tr.trackId,2)"></i>
           </div>
 
 
@@ -86,7 +84,7 @@
   <div class="del" >
   <p>Are you sure you want to delete batch </p>
     <div class="delbtn">
-      <button type="button" class="btn btn-primary  size" (click) ="deleteBatch(batch.batchId)" >Yes</button>
+      <button type="button" class="btn btn-primary  size" (click) ="deleteTrack(track.trackId)" >Yes</button>
       <button type="button" class="btn btn-danger size" (click) ="close()">No</button>
 
 
@@ -99,17 +97,24 @@
  <div class= "a " *ngIf ="showAdd === 1" >
     <div class="m" >
      <div class="cap">
-       Add New Batch
+       Add New Track
      </div>
-      <form action="" class="addform" #batchRecords = "ngForm" (ngSubmit) ="createNewBatch(batchRecords.value)">
-        <label for="">Batch Name</label>
-        <input type="text" name="batchName" placeholder="Batch Name" ngModel>
-        <label for="">start Date</label>
-        <input type="date" name="startDate" placeholder="start date" ngModel>
-        <label for="">End Date</label>
-        <input type="date" name="finishDate" ngModel>
-        <label for="">Select trainee status</label>
-        <select name="batchStatus"  ngModel>
+      <form action="" class="addform" #trackRecords = "ngForm" (ngSubmit) ="createNewTrack(trackRecords.value)">
+        <label for="">Track Name</label>
+        <input type="text" name="trackName" placeholder="Track Name" ngModel>
+        <label for="">Track Code</label>
+        <input type="text" name="trackCode" placeholder="track code" ngModel>
+       
+        <label for="">Select track Batch</label>
+        <select name="trackBatch"  ngModel>
+          <option value="1">Batch 1</option>
+          <option value="2">Batch 2</option>
+          <option value="3">Batch 3</option>
+          <option value="4">Batch 4</option>
+        </select>
+
+        <label for="">Select track status</label>
+        <select name="trackStatus"  ngModel>
           <option value="COMPLETED">Completed</option>
           <option value="CREATED">Created</option>
           <option value="SUSPENDED">Suspended</option>
@@ -117,7 +122,7 @@
         </select>
        
         <div class="addbtn">
-          <button type="submit" class="btn btn-primary btn-lg"  >Add trainee</button>
+          <button type="submit" class="btn btn-primary btn-lg"  >Add track</button>
           <button type="button" class="btn btn-danger size" (click) ="close()">Close</button>
         </div> 
       </form> 
