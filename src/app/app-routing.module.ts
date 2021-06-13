@@ -7,6 +7,7 @@ import { DepartComponent } from './entry/admin/depart/depart.component';
 import { TrackComponent } from './entry/admin/track/track.component';
 import { TraineeTabComponent } from './entry/admin/trainee-tab/trainee-tab.component';
 import { TraineeComponent } from './entry/admin/trainee/trainee.component';
+import { UsergroupComponent } from './entry/admin/usergroup/usergroup.component';
 import { UsersComponent } from './entry/admin/users/users.component';
 
 
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path:"departDetails",
     component: DepartComponent
+  },
+  {
+    path:"groupDetails",
+    component: UsergroupComponent
   }
   
 

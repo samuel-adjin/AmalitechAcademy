@@ -1,1 +1,156 @@
-<p>usergroup works!</p>
+
+<div class="container">
+  <!-- <div class="entries">
+    <p>Show</p>
+    <select name="" id="">
+      <option value="">2</option>
+      <option value="">5</option>
+      <option value="">8</option>
+      <option value="">10</option>
+      <option value="">12</option>
+    </select>
+    <p>entries</p>
+  </div> -->
+   <!-- <div class="status" >
+        <i class="fas fa-filter stat"></i>
+        <p>Status</p>
+        <select name="" class="wselect" (change)="getAllTraineesByStatus($event)">
+          <option value="">Any</option>
+          <option value="CREATED">Created</option>
+          <option value="ACTIVATED">Activated</option>
+          <option value="COMPLETED">Completed</option>
+          <option value="SUSPENDED">Suspended</option>
+        </select>
+      </div> -->
+
+      <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="User Id" aria-label="Search"
+          aria-describedby="search-addon" />
+        <span class="input-group-text border-0" id="search-addon" >
+          <i class="fas fa-search"  ></i>
+        </span>
+      </div>
+      <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="Username" aria-label="Search"
+          aria-describedby="search-addon"   />
+        <span class="input-group-text border-0" id="search-addon"  >
+          <i class="fas fa-search"  ></i>
+        </span>
+      </div>
+      <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="find by userGroup" aria-label="Search"
+          aria-describedby="search-addon" ngModel name="id" #groupId  />
+        <span class="input-group-text border-0" id="search-addon"  >
+          <i class="fas fa-search"  ></i>
+        </span>
+      </div>
+      <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="find by depart..." aria-label="Search"
+          aria-describedby="search-addon" ngModel name="id"  />
+        <span class="input-group-text border-0" id="search-addon" >
+          <i class="fas fa-search"  ></i>
+        </span>
+      </div>
+</div>
+<div class="btnCon" >
+  <button type="button" class="btn btn-primary btn-sm" (click) =add(1) >Add New UserGroup</button>
+</div>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar pos">
+  <table class="table table-bordered table-striped mb-0">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">UserGroup Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of userGroup; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{u.name}}</td>
+        <td class="edit">
+          <div class="edt">
+            <i class="far fa-edit pen" (click) = "add2(d.groupId,3)"></i>
+          </div>
+          <div>
+            <i class="fas fa-trash-alt trash" (click) = "add2(d.groupId,2)"></i>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+         
+        </td>
+      </tr>
+     
+    </tbody>
+  </table>
+ 
+
+</div>
+
+<!-- delete modal user -->
+<div class= "a " *ngIf ="showAdd === 2" >
+  <div class="del" >
+  <p>Are you sure you want to delete UserGroup</p>
+    <div class="delbtn">
+      <button type="button" class="btn btn-primary  size" (click) ="deleteUserGroup(userGroup.groupId)" >Yes</button>
+      <button type="button" class="btn btn-danger size" (click) ="close()">No</button>
+
+
+    </div>
+  </div> 
+ 
+</div>
+<!-- modal delete user -->
+
+
+
+
+ <!-- modal add user-->
+ <div class= "a " *ngIf ="showAdd === 1" >
+    <div class="m" >
+     <div class="cap">
+       Add New UserGroup
+     </div>
+      <form action="" class="addform" #groupRecords = "ngForm" (ngSubmit) ="createNewDepart(groupRecords.value)">
+        <label for="">UserGroup Name</label>
+        <input type="text" class ="form-control" required name="groupName" #groupName = "ngModel" placeholder="UserGroup Name" ngModel>
+        <span *ngIf="!groupName.valid && groupName.touched"  class = "error">UserGroup Name  is required</span>
+        <div class="addbtn">
+          <button type="submit" [disabled] = "!groupRecords.valid" class="btn btn-primary btn-lg size"  >Add</button>
+          <button type="button" class="btn btn-danger size" (click) ="close()">Close</button>
+        </div> 
+      </form> 
+    </div> 
+   
+</div>
+ <!-- modal add user-->
+
+
+ <!-- modal update user -->
+ <div class= "a " *ngIf ="showAdd === 3" >
+  <div class="m" >
+   <div class="cap">
+     Edit UserGroup
+   </div>
+    <form action="" class="addform" #groupRecords = "ngForm" (ngSubmit) ="updateDepart(groupRecords.value)">
+      <label for="">UserGroup Name</label>
+      <input type="text" name="groupName" placeholder="UserGroup Name" ngModel>
+      <div class="addbtn">
+        <button type="submit" class="btn btn-primary btn-lg"  >Add UserGroup</button>
+        <button type="button" class="btn btn-danger size" (click) ="close()">Close</button>
+      </div> 
+    </form> 
+  </div> 
+ 
+</div>
+<!-- modal add user -->
